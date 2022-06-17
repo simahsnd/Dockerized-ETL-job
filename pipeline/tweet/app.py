@@ -2,9 +2,6 @@ import tweepy
 import pymongo
 import time
 import twitter_keys
-#tweepy.__version__
-#!pip3 install pymongo
-#pymongo.__version__
 
 
 
@@ -20,16 +17,11 @@ db = mongo_client.twit
 search_query = 'BarackObama lang:en -is:retweet -is:reply -is:quote -has:links'
 cursor = client.search_recent_tweets(query=search_query,
     tweet_fields=['text', 'created_at', 'public_metrics'], max_results=10)
-#for tweet in cursor.data: #BarackObama
- #    print(tweet.text)
+
  
-t_end = time.time() + 20  # took 5m
-while time.time() < t_end:  #while True:
+t_end = time.time() + 20  
+while time.time() < t_end: 
      for tweet in cursor.data:
           js_row = {'text': tweet.text, 'created_at': tweet.created_at}
           db.twit.insert_one(js_row)
           time.sleep(3)
-     
-#db.list_collection_names
-#db.name
-#mongo_client.list_database_names()
