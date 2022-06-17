@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  mongodb:
+    image: mongo
+    ports:
+    - 27027:27017
+
+  postgresdb:
+    image: postgres
+    ports:
+    - 5555:5432          
+    environment:
+    - POSTGRES_PASSWORD=****
+  
+    
+  tweet:
+    build: tweet/
+    volumes:
+    - ./tweet/:/app
+    depends_on:
+    - mongodb
+
+  etl:
+    build: etl/
+    volumes:
+    - ./etl/:/app
+    depends_on:
+    - mongodb
+    - postgresdb
+  
+  slack_bot:
+    build: slack/
+    volumes:
+    - ./slack/:/app
