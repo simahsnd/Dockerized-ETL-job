@@ -1,6 +1,5 @@
 # Project: Build a Dockerized Data Pipeline that analyzes the sentiment of tweets
 
-![data_flow_diagram](data_flow_diagram.jpeg)
 
 ### Background
 
