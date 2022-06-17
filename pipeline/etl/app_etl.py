@@ -6,11 +6,7 @@ from sqlalchemy import create_engine
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
-# aval docker ro run konam bad mongo bad postgres
-# docker run --name mymon -it -d -p 27027:27017 mongo
-# docker exec -it mymon mongo
-#docker run -d --name mypg -p 5555:5432 -e POSTGRES_PASSWORD=1234 postgres
-#docker exec -it mypg psql -p 5432 -U postgres
+
 
 mongo_client = pymongo.MongoClient(host='mongodb',port=27017)
 
@@ -46,8 +42,8 @@ df_tweets.tweets = df_tweets.tweets.apply(clean_tweets)
 #USER = 'sima'
 #PASSWORD = '1234'
 #HOST = 'localhost'
-# pg = create_engine('postgresql://user:password@host:5432/dbname', echo=True)
-pg = create_engine('postgresql://postgres:1234@postgresdb:5432/postgres', echo=True)
+
+pg = create_engine('', echo=True)
 pg.execute('''
     CREATE TABLE IF NOT EXISTS tweets (
     text VARCHAR(500),
